@@ -117,7 +117,13 @@ section{padding:88px 0}
 .contact-grid p{margin:0;font-size:1rem}
 .contact-grid a{text-decoration:none;border-bottom:1px solid var(--gold-2)}
 
-footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-size:.82rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:56px 0 30px;font-size:.9rem;color:var(--muted)}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+.footer-grid .brand-mark{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-bottom:10px}
+footer p{margin:6px 0}
+footer a{text-decoration:none}
+footer a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;text-align:center;font-size:.8rem}
 
 .ov{position:fixed;inset:0;background:rgba(10,9,6,.6);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
 .ov.on{display:flex}
@@ -149,6 +155,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-si
   .gal div:nth-child(1){grid-row:auto;aspect-ratio:16/10}
   .gal div{aspect-ratio:4/3}
   .contact-grid{grid-template-columns:1fr;gap:24px}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
 }
 </style>
 </head>
@@ -259,7 +266,25 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-si
 
 </main>
 
-<footer>© 2026 Azamat's Hotel. Barcha huquqlar himoyalangan.</footer>
+<footer><div class="wrap footer-grid">
+  <div>
+    <div class="brand-mark">Azamat's Hotel</div>
+    <p>Toshkent markazida yuqori darajadagi mehmondo'stlik va individual xizmat.</p>
+  </div>
+  <div>
+    <span class="eyebrow">Aloqa</span>
+    <p>Amir Temur shoh ko'chasi 45,<br>Mirobod tumani, Toshkent</p>
+    <p><a href="tel:+998971234567">+998 97 123 45 67</a></p>
+    <p><a href="mailto:reservation@azamatshotel.uz">reservation@azamatshotel.uz</a></p>
+  </div>
+  <div>
+    <span class="eyebrow">Ijtimoiy tarmoqlar</span>
+    <p><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></p>
+    <p><a href="https://instagram.com/azamats_hotel" target="_blank" rel="noopener">Instagram</a></p>
+  </div>
+</div>
+<div class="wrap footer-bottom">© 2026 Azamat's Hotel. Barcha huquqlar himoyalangan.</div>
+</footer>
 
 <div class="ov" id="ov"><div class="modal">
   <button class="close-x" onclick="closeModal()">×</button>
