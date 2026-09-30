@@ -34,6 +34,9 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:va
 .nav-links a:hover{opacity:1;color:var(--gold)}
 .nav-r{display:flex;align-items:center;gap:14px}
 .menu-btn{display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink);padding:4px}
+main{display:block}
+.page{display:none}
+.page.active{display:block}
 .btn{border:1px solid var(--gold);background:none;color:var(--ink);padding:12px 26px;font:500 .78rem/1 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:.25s;text-decoration:none;display:inline-block}
 .btn:hover{background:var(--gold);color:#141109;border-color:var(--gold)}
 .btn-solid{background:var(--gold);color:#141109}
@@ -152,9 +155,9 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-si
 <body>
 
 <header><nav class="nav">
-  <button class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">Azamat's Hotel</button>
+  <button class="brand" data-page="home">Azamat's Hotel</button>
   <div class="nav-links" id="navLinks">
-    <a href="#about">Biz haqimizda</a><a href="#xonalar">Xonalar</a><a href="#takliflar">Takliflar</a><a href="#xizmatlar">Xizmatlar</a><a href="#kontaktlar">Kontaktlar</a>
+    <a data-page="about">Biz haqimizda</a><a data-page="xonalar">Xonalar</a><a data-page="takliflar">Takliflar</a><a data-page="xizmatlar">Xizmatlar</a><a data-page="kontaktlar">Kontaktlar</a>
   </div>
   <div class="nav-r">
     <button class="btn btn-solid" onclick="openBooking()">Bron qilish</button>
@@ -162,32 +165,39 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-si
   </div>
 </nav></header>
 
-<section class="hero"><div class="scene"></div>
+<main>
+
+<section class="page active" id="page-home">
+<div class="hero"><div class="scene"></div>
   <div class="hero-in wrap">
     <span class="eyebrow">Toshkent · Mirobod tumani</span>
     <h1>Sizni oddiy mehmon emas, aziz qadrdon sifatida kutamiz</h1>
     <div class="rule"></div>
     <p>Azamat's Hotel — shahar markazida joylashgan, yuqori darajadagi qulaylik va individual xizmat falsafasiga qurilgan mehmonxona.</p>
     <div class="row">
-      <a class="btn" href="#xonalar">Xonalarni ko'rish</a>
+      <a class="btn" data-page="xonalar">Xonalarni ko'rish</a>
       <button class="btn btn-solid" onclick="openBooking()">Bron qilish</button>
     </div>
   </div>
+</div>
 </section>
 
-<section id="about"><div class="wrap about">
+<section class="page" id="page-about"><div class="wrap about">
   <div class="about-art"></div>
   <div>
     <span class="eyebrow">Biz haqimizda</span>
     <h2>Har bir tafsilot — sizning qulayligingiz uchun</h2>
     <p>Azamat's Hotel Toshkent markazida joylashgan — metro va temir yo'l vokzaliga piyoda masofada, aeroportgacha 10 daqiqa. Har bir mehmonimizga individual yondashuv, ehtiyojlarni oldindan sezish va xizmatning yuqori sifati — bizni boshqalardan ajratib turadi. Xizmat 24/7 rejimida ishlaydi.</p>
-    <a class="btn" href="#kontaktlar">Batafsil</a>
   </div>
-</div></section>
-
+</div>
 <hr class="hr">
+<div class="wrap" style="padding-top:76px">
+  <div class="sh"><span class="eyebrow">Fotogalereya</span><h2>Mehmonxona ichidan lavhalar</h2></div>
+  <div class="gal"><div class="g1"></div><div class="g2"></div><div class="g3"></div><div class="g4"></div><div class="g5"></div></div>
+</div>
+</section>
 
-<section id="xonalar"><div class="wrap">
+<section class="page" id="page-xonalar"><div class="wrap">
   <div class="sh"><span class="eyebrow">Xonalar</span><h2>Har bir ehtiyojga mos xona</h2><p>Barcha xonalarda Wi-Fi, konditsioner va kundalik tozalash xizmati mavjud.</p></div>
   <div class="rooms">
     <div class="room">
@@ -211,7 +221,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-si
   </div>
 </div></section>
 
-<section id="takliflar" style="background:var(--bg-2)"><div class="wrap">
+<section class="page" id="page-takliflar"><div class="wrap">
   <div class="sh"><span class="eyebrow">Maxsus takliflar</span><h2>Tejashning yana bir usuli</h2></div>
   <div class="offers">
     <div class="offer"><div class="pct">−15%</div><h3>Erta bron qilish</h3><p>Sayohatingizni oldindan rejalashtiring va ko'proq tejang.</p></div>
@@ -221,7 +231,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-si
   </div>
 </div></section>
 
-<section id="xizmatlar"><div class="wrap">
+<section class="page" id="page-xizmatlar"><div class="wrap">
   <div class="sh"><span class="eyebrow">Xizmatlar</span><h2>Har bir tashrifingiz uchun</h2></div>
   <div class="services">
     <div class="svc"><svg viewBox="0 0 24 24"><path d="M4 19h16M4 19V9l8-5 8 5v10M9 19v-6h6v6"/></svg><h3>Nonushta</h3></div>
@@ -232,24 +242,22 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;font-si
   </div>
 </div></section>
 
-<section id="galereya" style="background:var(--bg-2)"><div class="wrap">
-  <div class="sh"><span class="eyebrow">Fotogalereya</span><h2>Mehmonxona ichidan lavhalar</h2></div>
-  <div class="gal"><div class="g1"></div><div class="g2"></div><div class="g3"></div><div class="g4"></div><div class="g5"></div></div>
-</div></section>
-
+<section class="page" id="page-kontaktlar">
 <div class="social-bar">
   <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
   <a href="https://instagram.com/azamats_hotel" target="_blank" rel="noopener">Instagram</a>
 </div>
-
-<section id="kontaktlar"><div class="wrap">
+<div class="wrap" style="padding-top:76px">
   <div class="sh"><span class="eyebrow">Kontaktlar</span><h2>Biz bilan bog'laning</h2></div>
   <div class="contact-grid">
     <div><span class="eyebrow">Manzil</span><p>Amir Temur shoh ko'chasi 45,<br>Mirobod tumani, Toshkent</p></div>
     <div><span class="eyebrow">Telefon</span><p><a href="tel:+998971234567">+998 97 123 45 67</a><br><small style="color:var(--muted)">Mobil · WhatsApp · Telegram</small></p></div>
     <div><span class="eyebrow">Email</span><p><a href="mailto:reservation@azamatshotel.uz">reservation@azamatshotel.uz</a></p></div>
   </div>
-</div></section>
+</div>
+</section>
+
+</main>
 
 <footer>© 2026 Azamat's Hotel. Barcha huquqlar himoyalangan.</footer>
 
@@ -269,8 +277,18 @@ const ROOMS=[
 const money=n=>(+n||0).toLocaleString("ru-RU");
 let cur=ROOMS[0],total=0;
 
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>$("navLinks").classList.remove('open')));
+function goPage(id){
+  if(!$("page-"+id))id="home";
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+id));
+  document.querySelectorAll("[data-page]").forEach(a=>a.classList.toggle("on",a.dataset.page===id));
+  if(location.hash!=="#"+id)history.pushState(null,"","#"+id);
+  window.scrollTo({top:0,behavior:"instant"});
+  $("navLinks").classList.remove("open");
+}
+document.querySelectorAll("[data-page]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();goPage(el.dataset.page)}));
+window.addEventListener("popstate",()=>goPage((location.hash||"#home").slice(1)));
 $("menuBtn").onclick=()=>$("navLinks").classList.toggle("open");
+goPage((location.hash||"#home").slice(1));
 
 function bfHTML(){
   return `<h3>${cur.name}</h3><p class="sub">${money(cur.price)} so'm / tun</p>
